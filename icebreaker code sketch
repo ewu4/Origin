@@ -1,0 +1,72 @@
+ViewController.h
+
+#import <UIKit/UIKit.h>
+
+@interface ViewController : UIViewController
+
+-(void)buttonPressed:(id)sender;
+
+@end
+
+
+---------------
+
+ViewController.m
+
+#import "ViewController.h"
+
+@implementation ViewController
+
+- (void)viewDidLoad
+{
+  [super viewDidLoad];
+
+  UIButton *starttButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+  firstButton.frame = CGRectMake(120, 100, 80, 44);
+  [starttButton setTitle:@"Start!" forState:UIControlStateNormal];
+  [self.view addSubview:startButton];
+
+[startButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+
+-(void)buttonPressed:(id)sender
+{
+NSLog(@"Button pressed, sender: %@", sender);
+self.view.backgroundColor = [UIColor colorWithRed:0.462 green:0.749 blue:0.937 alpha:1.0];;
+[sender removeFromSuperview];
+}
+
+@end
+
+-----------------
+
+AppDelegate.m
+
+
+#import "ViewController.h"
+
+@implementation AppDelegate
+-(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
+{
+
+CGRect viewRect = [[UIScreen mainScreen] bounds];
+self.window = [[UIWindow alloc] initWithFrame:viewRect];
+
+self.viewController = [[ViewController alloc] init];
+self.window.rootViewController = self.viewController;
+[self.window makeKeyAndVisible];
+
+}
+
+@end
+-------------------------------
+
+AppDelegate.h
+
+#import <UIKit/UIKit.h>
+
+@class ViewController;
+@property (strong, nonatomic) Viewcontroller *viewController;
+
+@end
